@@ -11,11 +11,7 @@
     <artifactId>selenium-java</artifactId>
     <version>4.31.0</version>
 </dependency>
-    <dependency>
-    	<groupId>DemoSelenium</groupId>
-    	<artifactId>DemoSelenium</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
+    
 </dependencies>
 
 

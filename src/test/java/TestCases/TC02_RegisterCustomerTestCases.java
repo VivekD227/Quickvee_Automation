@@ -2,16 +2,22 @@ package TestCases;
 
 import java.time.Duration;
 
+
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.RegisterPage;
+
+
+@Listeners(utilities.TestListener.class)
 
 public class TC02_RegisterCustomerTestCases {
 
@@ -270,7 +276,7 @@ WebDriver driver;
        
 	}
 	
-	@Test(priority = 7)
+	@Test(priority = 6)
 	public void FirstNamenotValid() throws InterruptedException {
 		
 		
@@ -309,23 +315,270 @@ WebDriver driver;
 	    String currentUrl = driver.getCurrentUrl();
         Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!, User Cannot login with Blank First Name input.");
 
-       System.out.println("Test Case Passed!! User only accept Alphabetic Character.");
-	
-       
+       System.out.println("Test Case Passed!! First name must contain only alphabets");
+	    
 	}
 	
-	//@Test(priority=10)
+	@Test(priority = 7)
+	public void lastNameNotValid() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey@");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("8928185554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey521@gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek@123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek@123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+      
+	        Assert.assertTrue(!register.isLastNameAlphabetic(), "Last name must contain only alphabets.");
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+       System.out.println("Test Case Passed!! Last name must contain only alphabets");
+	 
+	}
+	
+	@Test(priority = 8)
+	public void phoneNotValid() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("892a85554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey521@gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek@123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek@123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+      
+	     Assert.assertTrue(!register.isPhoneNumberValid(), "Phone number must be exactly 10 digits and Number.");
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+
+       System.out.println("Test Case Passed!! Phone number must be exactly 10 digits and Number");
+	 
+	}
+	@Test(priority = 9)
+	public void userNameNotValid() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("8921185554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey521gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek@123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek@123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+      
+	    Assert.assertTrue(!register.isUsernameEmailValid(), "Inavlid Email ID");
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+
+       System.out.println("Test Case Passed!! Invalid user name");
+	 
+	}
+	
+	@Test(priority = 10)
+	public void passwordInvalid() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("8921185554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey521@gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek@123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+      
+	        Assert.assertTrue(!register.isPasswordValid(), "Password does not meet the required criteria.");
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+
+       System.out.println("Test Case Passed!! Invalid Password format");
+	 
+	}
+	@Test(priority = 10)
+	public void confirmPasswordNotValid() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("8921185554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey521@gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek@123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+	    Assert.assertNotEquals(passwordField, CpasswordField, "Password and Confirm Password do not match.");
+     
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+
+       System.out.println("Test Case Passed!! Password and Confirm password mismatch");
+	 
+	}
+	@Test(priority = 11)
+	public void emailAlreadyExistValidation() throws InterruptedException {
+		
+		
+		RegisterPage register = new RegisterPage(driver);
+		register.setFirstName("Vivek");
+		
+		
+		String firstNameField = register.getFirstName();
+		System.out.println("First Name: " +firstNameField);
+		
+		
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
+	        
+	     register.setPhone("8921185554");
+	        String phoneFiled = register.getPhone();
+	        System.out.println("Phone Number: " +phoneFiled);
+	        
+	     register.setUsername("vivek.dubey@521@gmail.com");
+	        String usernameField = register.getUsername();
+	        System.out.println("Username: " +usernameField);
+	        
+	     register.setPassword("Vivek@123");
+	        String passwordField = register.getPassword();
+	        System.out.println("Password: " +passwordField);
+	        
+	     register.setConfirmPassword("Vivek@123");
+	        String CpasswordField = register.getConfirPassword();
+	        System.out.println("Confirm Password: " +CpasswordField);
+	        
+	     register.clickRegister();
+		
+	     if (register.isEmailExist()) {
+	            System.out.println("Email already exists error displayed.");
+	            Assert.assertTrue(true, "Email already exists error displayed as expected.");
+	        }
+	    String currentUrl = driver.getCurrentUrl();
+        Assert.assertEquals(currentUrl, "https://quickvee.com/register","Test Case Passed!!");
+
+       System.out.println("Test Case Passed!! Email id Already Exist");
+	 
+	}
+	
+	@Test(priority=12)
 	public void loginDisplay() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
-		loginpage.loginPageDisplay();
-		loginpage.notLogin();
-		loginpage.loginBtn();
-		System.out.println(" ");
 		
-		HomePage homepage = new HomePage(driver);
-		homepage.isRegisterPage();
-		homepage.RegisterBtnClick();
-		System.out.println(" ");
 
 		
 		RegisterPage register = new RegisterPage(driver);
@@ -353,7 +606,7 @@ WebDriver driver;
 
         
  
-        register.setUsername("vivek.dubey521@gmail.com");
+        register.setUsername("vivek.dubeys521@gmail.com");
         String usernameField = register.getUsername();
         System.out.println("Username: " +usernameField);
         Assert.assertTrue(!usernameField.isEmpty(), "Mandatory field kindly enter Username!!");
@@ -364,6 +617,8 @@ WebDriver driver;
         String passwordField = register.getPassword();
         System.out.println("Password: " +passwordField);
         Assert.assertTrue(!passwordField.isEmpty(), "Mandatory field kindly enter Password!!");
+        Assert.assertTrue(register.isPasswordValid(), "Password does not meet the required criteria.");
+
         
         register.setConfirmPassword("Vivek@123");
         String CpasswordField = register.getConfirPassword();

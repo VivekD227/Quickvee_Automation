@@ -147,9 +147,7 @@ public class RegisterPage extends waitHelper{
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", registerButtonElement);
 	    Thread.sleep(1000); // Small pause to ensure scroll completes
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", registerButtonElement);
-	    System.out.println("-----------------------");
-	     System.out.println(" ");
-	
+	    System.out.println("The button is Clicked");
 	
 	}
 	
@@ -163,6 +161,18 @@ public class RegisterPage extends waitHelper{
 		List<WebElement> errorMessage = driver.findElements(By.xpath("//span[@class=\"input-error\"]"));
 		return !errorMessage.isEmpty();
 	}
+	
+	public boolean isPasswordValid() {
+	    String password = getPassword();
+	    if (password == null) {
+	        return false;
+	    }
+	    
+	    // At least 8 characters, one digit, one lowercase, one uppercase, one special character
+	    String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$";
+	    return password.matches(passwordPattern);
+	}
+
 
 	
 }

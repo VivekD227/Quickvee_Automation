@@ -5,10 +5,8 @@
     <classes>
       <class name="TestCases.TC02_RegisterCustomerTestCases">
         <methods>
-          <include name="tearDown"/>
-          <include name="FirstNamenotValid"/>
           <include name="setUp"/>
-          <include name="ConfirmpasswordBlank"/>
+          <include name="loginDisplay"/>
         </methods>
       </class> <!-- TestCases.TC02_RegisterCustomerTestCases -->
     </classes>
