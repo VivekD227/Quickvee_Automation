@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -173,7 +175,16 @@ public class RegisterPage extends waitHelper{
 	    return password.matches(passwordPattern);
 	}
 
-
+	public String newEmail() {
+		
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String dates = sdf.format(date);
+		System.out.println(dates); 
+		String lastDateFormat = dates.replace("/", "").replace(":","").replace(" ", "");
+		return lastDateFormat;
+		
+	}
 	
 }
 

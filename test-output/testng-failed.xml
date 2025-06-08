@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestCases.TC02_RegisterCustomerTestCases">
+      <class name="TestCases_RegisterPage.TC_RegisterPage_005">
         <methods>
+          <include name="propervalidationMessage"/>
           <include name="setUp"/>
-          <include name="loginDisplay"/>
         </methods>
-      </class> <!-- TestCases.TC02_RegisterCustomerTestCases -->
+      </class> <!-- TestCases_RegisterPage.TC_RegisterPage_005 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

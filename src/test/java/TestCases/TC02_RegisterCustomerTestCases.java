@@ -83,7 +83,6 @@ WebDriver driver;
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
-	     Thread.sleep(2000);
 	     
 		
        
