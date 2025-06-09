@@ -1,7 +1,10 @@
-package TestCases_RegisterPage;
+//Verify Registering an Account by providing an invalid phone number
+
+package testCases.register;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -16,9 +19,7 @@ import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-//Validate the register field by providing all the information (LastName) 
-
-public class TC_RegisterPage_003 {
+public class TC_RegisterPage_008 {
 	
 WebDriver driver;
 	
@@ -32,7 +33,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void allFields() throws InterruptedException {
+	public void invalidPhoneNumber() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -53,13 +54,12 @@ WebDriver driver;
 		 register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	
 	        
-	     register.setPhone("8928185554");
+	     register.setPhone("98765");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
-	     register.setUsername(register.newEmail()+"@gmail.com");
+	     register.setUsername(register.newEmail() +"@gmail.com");
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
@@ -72,21 +72,18 @@ WebDriver driver;
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
-	     loginpage.loggedIn();
-	     String url = "https://quickvee.com";
 	     
-	     Assert.assertEquals(driver.getCurrentUrl(), url);
-	     
-	     
-	     Thread.sleep(2000);
-
+	    
+	    String phoneErrorMessage = "Phone no not valid";
+	    
+	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Phone no not valid']")).getText(), phoneErrorMessage);
+	   
+	    
+	   Thread.sleep(2000);
+		
 	}
-	
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}
-	
 }
-
-	

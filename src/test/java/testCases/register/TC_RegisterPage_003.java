@@ -1,8 +1,10 @@
-package TestCases_RegisterPage;
+//Validate the register field by providing all the information (LastName) 
+
+
+package testCases.register;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -17,8 +19,9 @@ import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_RegisterPage_005 {
 
+public class TC_RegisterPage_003 {
+	
 WebDriver driver;
 	
 	@BeforeClass
@@ -31,7 +34,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void properValidationMessage() throws InterruptedException {
+	public void allFields() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -45,55 +48,48 @@ WebDriver driver;
 		
 		RegisterPage register = new RegisterPage(driver);
 		
-		register.setFirstName("");
+		register.setFirstName("Vivek");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("");
+		 register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
+	
 	        
-	     register.setPhone("");
+	     register.setPhone("8928185554");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
-	     register.setUsername("");
+	     register.setUsername(register.newEmail()+"@gmail.com");
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("");
+	     register.setPassword("Vivek@123");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
-	     register.setConfirmPassword("");
+	     register.setConfirmPassword("Vivek@123");
 	        String CpasswordField = register.getConfirPassword();
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
 	     
-	    String firstNameErrorMessage = "Please enter First Name";
-	    String phoneErrorMessage = "Please enter phone number";
-	    String emailErrorMessage = "Please enter email";
-	    String passwordErrorMessage = "Please enter password";
-	    String confirmpasswordErrorMessage = "Please enter re-enter password";
-	    String CaptchaErrorMessage = "Please check captcha";
+	     loginpage.loggedIn();
+	     String url = "https://quickvee.com";
+	     
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     
+	     
+	     Thread.sleep(2000);
 
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter First Name']")).getText(), firstNameErrorMessage);
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter phone number']")).getText(), phoneErrorMessage);
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter email']")).getText(), emailErrorMessage);
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter password']")).getText(), passwordErrorMessage);
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter re-enter password']")).getText(), confirmpasswordErrorMessage);
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please check captcha']")).getText(), CaptchaErrorMessage);
-
-	    
-	   Thread.sleep(2000);
-		
 	}
+	
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}
 	
-	
 }
+
+	

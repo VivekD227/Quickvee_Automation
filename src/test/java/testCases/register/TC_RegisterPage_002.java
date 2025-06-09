@@ -1,4 +1,6 @@
-package TestCases_RegisterPage;
+//Validate whether if we create a customer successfully then the name of login button is change as of name of customer
+
+package testCases.register;
 
 import java.time.Duration;
 
@@ -17,7 +19,6 @@ import pageObjects.RegisterPage;
 @Listeners(utilities.TestListener.class)
 
 
-//Validate whether if we create a customer successfully then the name of login button is change as of name of customer
 public class TC_RegisterPage_002 {
 
 WebDriver driver;

@@ -1,22 +1,25 @@
-package TestCases_RegisterPage;
+//Validate Registering an Account by providing an invalid email address into the E-Mail field
+
+package testCases.register;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.RegisterPage;
 
-
 @Listeners(utilities.TestListener.class)
 
-//Validate Registering an Account by providing only the Mandatory fields
-
-public class TC_RegisterPage_001 {
+public class TC_RegisterPage_007 {
 	
 WebDriver driver;
 	
@@ -30,7 +33,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void onlyMandatoryField() throws InterruptedException {
+	public void invalidEmailFormat() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -48,14 +51,15 @@ WebDriver driver;
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		
-	
+		 register.setLastName("Dubey");
+	     String lastNameField = register.getLastName();
+	     System.out.println("Last Name: " +lastNameField);
 	        
-	     register.setPhone("8928185554");
+	     register.setPhone("9876542313");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
-	     register.setUsername(register.newEmail()+"@gmail.com");
+	     register.setUsername("vivek.dubey521gmail.com");
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
@@ -69,18 +73,18 @@ WebDriver driver;
 	        
 	     register.clickRegister();
 	     
-	     String url = "https://quickvee.com";
-	     
-	     Assert.assertEquals(driver.getCurrentUrl(), url);
-	     
-	     
-	     Thread.sleep(2000);
+	    
+	    String emailInvalidError = "Please enter valid email";
+	    
+	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter valid email']")).getText(), emailInvalidError);
+	   
+	    
+	   Thread.sleep(2000);
 		
 	}
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}
-	
 	
 }

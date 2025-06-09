@@ -2,20 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-08T10:27:39 GMT-07:00" name="Default suite" finished-at="2025-06-08T10:28:03 GMT-07:00" duration-ms="23836">
+  <suite started-at="2025-06-09T03:43:48 GMT-07:00" name="Default suite" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="14455">
     <groups>
     </groups>
-    <test started-at="2025-06-08T10:27:39 GMT-07:00" name="Default test" finished-at="2025-06-08T10:28:03 GMT-07:00" duration-ms="23836">
-      <class name="TestCases_RegisterPage.TC_RegisterPage_005">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:TestCases_RegisterPage.TC_RegisterPage_005@40a4337a]" started-at="2025-06-08T10:27:39 GMT-07:00" name="setUp" finished-at="2025-06-08T10:27:47 GMT-07:00" duration-ms="7756" status="PASS">
+    <test started-at="2025-06-09T03:43:48 GMT-07:00" name="Default test" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="14455">
+      <class name="testCases.register.TC_RegisterPage_012">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:43:48 GMT-07:00" name="setUp" finished-at="2025-06-09T03:44:02 GMT-07:00" duration-ms="14079" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="propervalidationMessage()[pri:0, instance:TestCases_RegisterPage.TC_RegisterPage_005@40a4337a]" started-at="2025-06-08T10:27:47 GMT-07:00" name="propervalidationMessage" finished-at="2025-06-08T10:28:03 GMT-07:00" duration-ms="15949" status="PASS">
+        <test-method signature="displayOtherText()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:44:02 GMT-07:00" name="displayOtherText" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="276" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- propervalidationMessage -->
-      </class> <!-- TestCases_RegisterPage.TC_RegisterPage_005 -->
+        </test-method> <!-- displayOtherText -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:44:03 GMT-07:00" name="tearDown" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="73" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testCases.register.TC_RegisterPage_012 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

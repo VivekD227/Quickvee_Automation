@@ -1,4 +1,6 @@
-package TestCases_RegisterPage;
+//Validate the register of account by providing Invalid first name input
+
+package testCases.register;
 
 import java.time.Duration;
 
@@ -15,12 +17,11 @@ import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.RegisterPage;
 
-
 @Listeners(utilities.TestListener.class)
 
-public class TC_RegisterPage_004 {
+public class TC_RegisterPage_009 {
 
-WebDriver driver;
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -32,7 +33,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void differentPasswordAndConfirmPassword() throws InterruptedException {
+	public void invalidFirstName() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -46,16 +47,15 @@ WebDriver driver;
 		
 		RegisterPage register = new RegisterPage(driver);
 		
-		register.setFirstName("Vivek");
+		register.setFirstName("Vive@k");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
 		 register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	
 	        
-	     register.setPhone("8928185554");
+	     register.setPhone("9876542313");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
@@ -67,23 +67,23 @@ WebDriver driver;
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
-	     register.setConfirmPassword("Vivek123");
+	     register.setConfirmPassword("Vivek@123");
 	        String CpasswordField = register.getConfirPassword();
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
 	     
-	    String errorMessage = "Confirm Password not matching";
 	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Confirm Password not matching']")).getText(), errorMessage);
-	     
-	     Thread.sleep(2000);
+	    String firstNameError = "Name only contain alphabet";
+	    
+	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Name only contain alphabet']")).getText(), firstNameError);
+	   
+	    
+	   Thread.sleep(2000);
 		
 	}
-	
 	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}
-	
 }
