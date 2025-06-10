@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-09T03:43:48 GMT-07:00" name="Default suite" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="14455">
+  <suite started-at="2025-06-10T04:09:41 GMT-07:00" name="Default suite" finished-at="2025-06-10T04:10:50 GMT-07:00" duration-ms="68402">
     <groups>
     </groups>
-    <test started-at="2025-06-09T03:43:48 GMT-07:00" name="Default test" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="14455">
-      <class name="testCases.register.TC_RegisterPage_012">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:43:48 GMT-07:00" name="setUp" finished-at="2025-06-09T03:44:02 GMT-07:00" duration-ms="14079" status="PASS">
+    <test started-at="2025-06-10T04:09:41 GMT-07:00" name="Default test" finished-at="2025-06-10T04:10:50 GMT-07:00" duration-ms="68402">
+      <class name="testCases.register.TC_RegisterPage_004">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.register.TC_RegisterPage_004@692f203f]" started-at="2025-06-10T04:09:41 GMT-07:00" name="setUp" finished-at="2025-06-10T04:10:35 GMT-07:00" duration-ms="53701" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="displayOtherText()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:44:02 GMT-07:00" name="displayOtherText" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="276" status="PASS">
+        <test-method signature="differentPasswordAndConfirmPassword()[pri:0, instance:testCases.register.TC_RegisterPage_004@692f203f]" started-at="2025-06-10T04:10:35 GMT-07:00" name="differentPasswordAndConfirmPassword" finished-at="2025-06-10T04:10:49 GMT-07:00" duration-ms="14587" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- displayOtherText -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.register.TC_RegisterPage_012@692f203f]" started-at="2025-06-09T03:44:03 GMT-07:00" name="tearDown" finished-at="2025-06-09T03:44:03 GMT-07:00" duration-ms="73" status="PASS">
+        </test-method> <!-- differentPasswordAndConfirmPassword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.register.TC_RegisterPage_004@692f203f]" started-at="2025-06-10T04:10:49 GMT-07:00" name="tearDown" finished-at="2025-06-10T04:10:50 GMT-07:00" duration-ms="81" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testCases.register.TC_RegisterPage_012 -->
+      </class> <!-- testCases.register.TC_RegisterPage_004 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

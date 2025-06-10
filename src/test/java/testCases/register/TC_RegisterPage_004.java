@@ -74,9 +74,12 @@ WebDriver driver;
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
-	     
-	    String errorMessage = "Confirm Password not matching";
+	     String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     String errorMessage = "Confirm Password not matching";
 	    
+	  
+
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Confirm Password not matching']")).getText(), errorMessage);
 	     
 	     Thread.sleep(2000);

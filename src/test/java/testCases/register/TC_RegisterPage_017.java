@@ -1,4 +1,4 @@
-//Validate whether the Password fields in the Register Account page are following Password Complexity Standards
+//Check whether we skip one of any mandatory field and click on register then, the new customer is register or not?
 
 package testCases.register;
 
@@ -19,23 +19,21 @@ import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-
-public class TC_RegisterPage_011 {
-
-
+public class TC_RegisterPage_017 {
+	
 	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get("https://quickvee.com");
 		
 	}
 	
-	@Test (priority = 1)
-	public void invalidPasswordSC() throws InterruptedException {
+	@Test(priority = 1)
+	public void firstNameBlank() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -49,15 +47,16 @@ public class TC_RegisterPage_011 {
 		
 		RegisterPage register = new RegisterPage(driver);
 		
-		register.setFirstName("Vivek");
+		register.setFirstName("");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("Dubey");
+		register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	        
-	     register.setPhone("9876542313");
+	
+
+	     register.setPhone("8928185554");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
@@ -65,7 +64,7 @@ public class TC_RegisterPage_011 {
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("Vivek123");
+	     register.setPassword("Vivek@123");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
@@ -75,32 +74,30 @@ public class TC_RegisterPage_011 {
 	        
 	     register.clickRegister();
 	     
-	    
-	    String passwordError = "Password should contain Special Character";
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Password should contain Special Character']")).getText(), passwordError);
-	   
-	    String url = "https://quickvee.com/register";
+	     String url = "https://quickvee.com/register";
+	     String ExpectedError = "Please enter First Name";
+	     
 	     Assert.assertEquals(driver.getCurrentUrl(), url);
-	   Thread.sleep(2000);
+	     Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter First Name']")).getText(), ExpectedError);
+
+	     Thread.sleep(2000);
 		
 	}
 	
-	@Test (priority = 2)
-	public void invalidPasswordNumber() throws InterruptedException {
-		
-		
+	@Test(priority = 2)
+	public void phoneBlank() throws InterruptedException {
 		RegisterPage register = new RegisterPage(driver);
 		
 		register.setFirstName("Vivek");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("Dubey");
+		register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	        
-	     register.setPhone("9876542313");
+	
+
+	     register.setPhone("");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
@@ -108,7 +105,7 @@ public class TC_RegisterPage_011 {
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("Vivek@");
+	     register.setPassword("Vivek@123");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
@@ -118,39 +115,38 @@ public class TC_RegisterPage_011 {
 	        
 	     register.clickRegister();
 	     
-	    
-	    String passwordError = "Password should contain number";
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Password should contain number']")).getText(), passwordError);
-	   
-	    
-	   Thread.sleep(2000);
+	     String url = "https://quickvee.com/register";
+	     String ExpectedError = "Please enter phone number";
+	     
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter phone number']")).getText(), ExpectedError);
+
+	     Thread.sleep(2000);
 		
 	}
 	
-	@Test (priority = 3)
-	public void invalidPasswordLC() throws InterruptedException {
-		
-		
+	@Test(priority = 3)
+	public void emailBlank() throws InterruptedException {
 		RegisterPage register = new RegisterPage(driver);
 		
 		register.setFirstName("Vivek");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("Dubey");
+		register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	        
-	     register.setPhone("9876542313");
+	
+
+	     register.setPhone("78459621245");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
-	     register.setUsername(register.newEmail()+"@gmail.com");
+	     register.setUsername("");
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("123@C");
+	     register.setPassword("Vivek@123");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
@@ -160,31 +156,31 @@ public class TC_RegisterPage_011 {
 	        
 	     register.clickRegister();
 	     
-	    
-	    String passwordError = "Password should contain Lowercase letter";
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Password should contain Lowercase letter']")).getText(), passwordError);
-	   
-	    
-	   Thread.sleep(2000);
+	     String url = "https://quickvee.com/register";
+	     String ExpectedError = "Please enter email";
+	     
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter email']")).getText(), ExpectedError);
+
+	     Thread.sleep(2000);
 		
 	}
 	
-	@Test (priority = 4)
-	public void invalidPasswordUC() throws InterruptedException {
-		
-		
+
+	@Test(priority = 4)
+	public void passwordBlank() throws InterruptedException {
 		RegisterPage register = new RegisterPage(driver);
 		
 		register.setFirstName("Vivek");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("Dubey");
+		register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	        
-	     register.setPhone("9876542313");
+	
+
+	     register.setPhone("78459621245");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
@@ -192,7 +188,7 @@ public class TC_RegisterPage_011 {
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("123@c");
+	     register.setPassword("");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
@@ -202,30 +198,29 @@ public class TC_RegisterPage_011 {
 	        
 	     register.clickRegister();
 	     
-	    
-	    String passwordError = "Password should contain Uppercase letter";
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Password should contain Uppercase letter']")).getText(), passwordError);
-	   
-	    
-	   Thread.sleep(2000);
+	     String url = "https://quickvee.com/register";
+	     String ExpectedError = "Please enter password";
+	     
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter password']")).getText(), ExpectedError);
+
+	     Thread.sleep(2000);
 		
 	}
-	@Test (priority = 5)
-	public void invalidPasswordLength() throws InterruptedException {
-		
-		
+	@Test(priority = 5)
+	public void confirmPasswordBlank() throws InterruptedException {
 		RegisterPage register = new RegisterPage(driver);
 		
 		register.setFirstName("Vivek");
 		String firstNameField = register.getFirstName();
 		System.out.println("First Name: " +firstNameField);
 		
-		 register.setLastName("Dubey");
+		register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	        
-	     register.setPhone("9876542313");
+	
+
+	     register.setPhone("78459621245");
 	        String phoneFiled = register.getPhone();
 	        System.out.println("Phone Number: " +phoneFiled);
 	        
@@ -233,23 +228,23 @@ public class TC_RegisterPage_011 {
 	        String usernameField = register.getUsername();
 	        System.out.println("Username: " +usernameField);
 	        
-	     register.setPassword("123@Cc");
+	     register.setPassword("Vivek@123");
 	        String passwordField = register.getPassword();
 	        System.out.println("Password: " +passwordField);
 	        
-	     register.setConfirmPassword("Vivek@123");
+	     register.setConfirmPassword("");
 	        String CpasswordField = register.getConfirPassword();
 	        System.out.println("Confirm Password: " +CpasswordField);
 	        
 	     register.clickRegister();
 	     
-	    
-	    String passwordError = "Length should be greater or equal to 8";
-	    
-	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Length should be greater or equal to 8']")).getText(), passwordError);
-	   
-	    
-	   Thread.sleep(2000);
+	     String url = "https://quickvee.com/register";
+	     String ExpectedError = "Confirm Password not matching";
+	     
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
+	     Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Confirm Password not matching']")).getText(), ExpectedError);
+
+	     Thread.sleep(2000);
 		
 	}
 	
@@ -257,4 +252,5 @@ public class TC_RegisterPage_011 {
 	public void tearDown() {
 		driver.quit();
 	}
+
 }

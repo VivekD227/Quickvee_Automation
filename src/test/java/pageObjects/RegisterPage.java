@@ -39,6 +39,10 @@ public class RegisterPage extends waitHelper{
 	
 	By registerBtn = By.xpath("//button[text()='Register']");
 	
+	By customerBtn = By.xpath("//a[@href='/customer-login']");
+	
+	By merchantBtn = By.xpath("//a[@href='https://www.quickvee.com/merchants/login']");
+	
 	//By error_message = By.xpath("//div[@class='MuiAlert-message css-1xsto0d']");
 	public void clearInputField(By locator) {
 	    WebElement element = driver.findElement(locator);
@@ -153,5 +157,26 @@ public class RegisterPage extends waitHelper{
 		
 	}
 	
+	public void customerLoginButton() throws InterruptedException {
+	    elementClick(customerBtn);
+	    WebElement customerButtonElement = driver.findElement(customerBtn);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", customerButtonElement);
+	    Thread.sleep(1000);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", customerButtonElement);
+
+	    System.out.println("Customer Login Button is Click");
+
+	}
+	
+	public void merchantLoginButton() throws InterruptedException {
+	    elementClick(merchantBtn);
+	    WebElement merchantButtonElement = driver.findElement(merchantBtn);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", merchantButtonElement);
+	    Thread.sleep(1000);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", merchantButtonElement);
+
+	    System.out.println("Merchant Login Button is Click");
+
+	}
 }
 

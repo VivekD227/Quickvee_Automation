@@ -18,7 +18,7 @@ import pageObjects.LoginPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_RegisterPage_013 {
+public class TC_RegisterPage_014 {
 
 WebDriver driver;
 	
@@ -32,7 +32,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void alreadyAccountText() throws InterruptedException {
+	public void merchantAccountText() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -45,9 +45,9 @@ WebDriver driver;
 		System.out.println("");
 		
 		
-		String alreadyAccount = "Already have an account?Login";
+		String merchantAccount = "Are you a Merchant?Login";
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//form[1]//div[2]//p[1]")).getText(), alreadyAccount);
+		Assert.assertEquals(driver.findElement(By.xpath("//form[1]//div[2]//p[2]")).getText(), merchantAccount);
 	
 		
 	}

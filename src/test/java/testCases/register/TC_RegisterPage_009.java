@@ -77,7 +77,8 @@ public class TC_RegisterPage_009 {
 	    String firstNameError = "Name only contain alphabet";
 	    
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Name only contain alphabet']")).getText(), firstNameError);
-	   
+	    String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
 	    
 	   Thread.sleep(2000);
 		

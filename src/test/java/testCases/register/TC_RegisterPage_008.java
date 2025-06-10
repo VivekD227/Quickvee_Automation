@@ -77,7 +77,8 @@ WebDriver driver;
 	    String phoneErrorMessage = "Phone no not valid";
 	    
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Phone no not valid']")).getText(), phoneErrorMessage);
-	   
+	    String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
 	    
 	   Thread.sleep(2000);
 		

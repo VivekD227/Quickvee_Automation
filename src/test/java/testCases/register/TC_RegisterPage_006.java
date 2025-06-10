@@ -72,6 +72,9 @@ WebDriver driver;
 	        
 	     register.clickRegister();
 	     
+	     
+	     String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
 	    
 	    String emailExistError = "Please Enter valid record";
 	    

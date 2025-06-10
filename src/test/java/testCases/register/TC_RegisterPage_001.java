@@ -25,7 +25,7 @@ WebDriver driver;
 	public void setUp() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.get("https://quickvee.com");
 		
 	}
@@ -50,7 +50,6 @@ WebDriver driver;
 		System.out.println("First Name: " +firstNameField);
 		
 		
-	
 	        
 	     register.setPhone("8928185554");
 	        String phoneFiled = register.getPhone();

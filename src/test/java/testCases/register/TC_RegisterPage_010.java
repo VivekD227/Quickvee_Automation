@@ -70,7 +70,8 @@ public class TC_RegisterPage_010 {
 	    String lastNameError = "Name only contain alphabet";
 	    
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Name only contain alphabet']")).getText(), lastNameError);
-	   
+	    String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
 	    
 	   Thread.sleep(2000);
 	}

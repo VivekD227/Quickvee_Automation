@@ -1,4 +1,4 @@
-//Check whether the text "Already have an account?Login" field is displayed or not
+//check whether when we click on login button of "Already have an account?Login" then it allows customer login or not
 
 package testCases.register;
 
@@ -15,12 +15,13 @@ import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_RegisterPage_013 {
+public class TC_RegisterPage_015 {
 
-WebDriver driver;
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -32,7 +33,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void alreadyAccountText() throws InterruptedException {
+	public void customerLoginButtonCheck() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -44,13 +45,18 @@ WebDriver driver;
 		homepage.RegisterBtnClick();
 		System.out.println("");
 		
+		RegisterPage register = new RegisterPage(driver);
+		register.customerLoginButton();
+		String url = "https://quickvee.com/customer-login";
+		String customerLoginText = "Customer Login";
+		String welcomeText = "Welcome Back, Login to Shop";
 		
-		String alreadyAccount = "Already have an account?Login";
-		
-		Assert.assertEquals(driver.findElement(By.xpath("//form[1]//div[2]//p[1]")).getText(), alreadyAccount);
-	
+		Assert.assertEquals(driver.getCurrentUrl(), url);
+		Assert.assertEquals(driver.findElement(By.xpath("//h1[normalize-space()='Customer Login']")).getText(), customerLoginText);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='sub-heading-from']")).getText(), welcomeText);
 		
 	}
+	
 	@AfterClass
 	public void tearDown() {
 		driver.quit();

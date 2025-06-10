@@ -1,10 +1,9 @@
-//Check whether the text "Already have an account?Login" field is displayed or not
+//check whether when we click on login button of "Are you a Merchant?" then it allows customer login or not
 
 package testCases.register;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -15,12 +14,13 @@ import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
+import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_RegisterPage_013 {
+public class TC_RegisterPage_016 {
 
-WebDriver driver;
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -32,7 +32,7 @@ WebDriver driver;
 	}
 	
 	@Test
-	public void alreadyAccountText() throws InterruptedException {
+	public void merchantLoginButtonCheck() throws InterruptedException {
 		LoginPage loginpage = new LoginPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
@@ -44,13 +44,24 @@ WebDriver driver;
 		homepage.RegisterBtnClick();
 		System.out.println("");
 		
+		String originalWindow = driver.getWindowHandle();
+		RegisterPage register = new RegisterPage(driver);
+		register.merchantLoginButton();
 		
-		String alreadyAccount = "Already have an account?Login";
+		for(String windowHandle : driver.getWindowHandles()) {
+			if(!windowHandle.equals(originalWindow)) {
+				driver.switchTo().window(windowHandle);
+				break;
+			}
+		}
 		
-		Assert.assertEquals(driver.findElement(By.xpath("//form[1]//div[2]//p[1]")).getText(), alreadyAccount);
+		
+		String url = "https://www.quickvee.com/merchants/login";
+		
+		Assert.assertEquals(driver.getCurrentUrl(), url, "Merchant login tab URL validation failed");
 	
-		
 	}
+	
 	@AfterClass
 	public void tearDown() {
 		driver.quit();

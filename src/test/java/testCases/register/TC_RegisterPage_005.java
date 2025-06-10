@@ -88,7 +88,8 @@ WebDriver driver;
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter re-enter password']")).getText(), confirmpasswordErrorMessage);
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please check captcha']")).getText(), CaptchaErrorMessage);
 
-	    
+	    String url = "https://quickvee.com/register";
+	    Assert.assertEquals(driver.getCurrentUrl(), url);
 	   Thread.sleep(2000);
 		
 	}

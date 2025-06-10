@@ -55,7 +55,6 @@ WebDriver driver;
 		 register.setLastName("Dubey");
 	     String lastNameField = register.getLastName();
 	     System.out.println("Last Name: " +lastNameField);
-	
 	        
 	     register.setPhone("8928185554");
 	        String phoneFiled = register.getPhone();

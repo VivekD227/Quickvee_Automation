@@ -78,6 +78,8 @@ WebDriver driver;
 	    
 	    Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter valid email']")).getText(), emailInvalidError);
 	   
+	    String url = "https://quickvee.com/register";
+	     Assert.assertEquals(driver.getCurrentUrl(), url);
 	    
 	   Thread.sleep(2000);
 		
