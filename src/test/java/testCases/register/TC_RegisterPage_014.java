@@ -13,8 +13,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import pageObjects.HomePage;
-import pageObjects.LoginPage;
+import pageObjects.CustomerLogin;
+import pageObjects.HomeFrontEndPage;
 
 @Listeners(utilities.TestListener.class)
 
@@ -33,13 +33,13 @@ WebDriver driver;
 	
 	@Test
 	public void merchantAccountText() throws InterruptedException {
-		LoginPage loginpage = new LoginPage(driver);
+		HomeFrontEndPage loginpage = new HomeFrontEndPage(driver);
 		loginpage.loginPageDisplay();
 		loginpage.notLogin();
 		loginpage.loginBtn();
 		System.out.println("");
 		
-		HomePage homepage = new HomePage(driver);
+		CustomerLogin homepage = new CustomerLogin(driver);
 		homepage.isRegisterPage();
 		homepage.RegisterBtnClick();
 		System.out.println("");

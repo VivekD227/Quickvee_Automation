@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class LoginPage {
+public class HomeFrontEndPage {
 	
 	WebDriver driver;
 	
-	public LoginPage(WebDriver driver) {
+	public HomeFrontEndPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
