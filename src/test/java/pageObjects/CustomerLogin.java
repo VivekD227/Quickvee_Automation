@@ -1,6 +1,5 @@
 package pageObjects;
 
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,6 +50,8 @@ public class CustomerLogin extends waitHelper {
 	
 	By merchantLoginBtn = By.xpath("//a[normalize-space()='Login']");
 	
+	By forgotPasswordPage = By.xpath("//h1[normalize-space()='Forgot Password']");
+	
 	public void isRegisterPage() {
 		boolean isDisplayedRegister = isRegisterDisplay.isDisplayed();
 		if(isDisplayedRegister) {
@@ -65,20 +66,20 @@ public class CustomerLogin extends waitHelper {
 		}
 	}
 	
-	public void quickveeLogoDisplay() {
+	public boolean quickveeLogoDisplay() {
 		visiblityOfElement(quickveeLogo);
-		driver.findElement(quickveeLogo).isDisplayed();
+		return driver.findElement(quickveeLogo).isDisplayed();
 	}
 	
-	public void customerLoginTextDisplay() {
+	public boolean customerLoginTextDisplay() {
 		visiblityOfElement(customerLoginText);
-		driver.findElement(customerLoginText).isDisplayed();
+		return driver.findElement(customerLoginText).isDisplayed();
 
 	}
 	
-	public void welcomeTextDisplay() {
+	public boolean welcomeTextDisplay() {
 		visiblityOfElement(welcomeText);
-		driver.findElement(welcomeText).isDisplayed();
+		return driver.findElement(welcomeText).isDisplayed();
 
 	}
 	
@@ -100,9 +101,9 @@ public class CustomerLogin extends waitHelper {
 		return driver.findElement(passwordField).getAttribute("value");
 	}
 	
-	public void forgotPasswordDisplay() {
+	public boolean forgotPasswordDisplay() {
 		visiblityOfElement(forgotPasswordBtn);
-		driver.findElement(forgotPasswordBtn).isDisplayed();
+		return driver.findElement(forgotPasswordBtn).isDisplayed();
 	}
 	
 	public void forgotPasswordClick() {
@@ -113,11 +114,12 @@ public class CustomerLogin extends waitHelper {
 	public void loginBtnClick() {
 		elementClick(loginBtn);
 		driver.findElement(loginBtn).click();
+		System.out.println("Login button is clicked");
 	}
 	
-	public void orSignInTextDisplay() {
+	public boolean orSignInTextDisplay() {
 		visiblityOfElement(orSignInText);
-		driver.findElement(orSignInText).isDisplayed();
+		return driver.findElement(orSignInText).isDisplayed();
 	}
 	
 	public void googleLoginClick() {
@@ -145,10 +147,15 @@ public class CustomerLogin extends waitHelper {
 		driver.findElement(merchantLoginBtn).click();
 	}
 	
+	public boolean isInForgotPasswordPage() {
+		visiblityOfElement(forgotPasswordPage);
+		return driver.findElement(forgotPasswordPage).isDisplayed();
+	}
 	
 	public void RegisterBtnClick() {
 		storeLoginBtn.click();
 		System.out.println("User is click on Register button to create a New user");
 	}
+	
 	
 }
