@@ -1,4 +1,4 @@
-//Verify logging into the Application using invalid email address and valid Password)
+//Validate logging into the Application using valid email address and invalid Password)
 
 package testCases.customerLogin;
 
@@ -18,8 +18,7 @@ import pageObjects.HomeFrontEndPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_CustomerLogin_006 {
-
+public class TC_CustomerLogin_007 {
 WebDriver driver;
 	
 	@BeforeClass
@@ -31,17 +30,17 @@ WebDriver driver;
 	}
 	
 	@Test(priority = 1)
-	public void invalidEmailValidPass() throws InterruptedException {
+	public void validEmailInvalidPass() throws InterruptedException {
 		HomeFrontEndPage homePage = new HomeFrontEndPage(driver);
 		homePage.loginBtn();
 		
 		CustomerLogin customerLogin = new CustomerLogin(driver);
 		
-		customerLogin.setEmail("vivek22@lgmail.com");
+		customerLogin.setEmail("vivek22@gmail.com");
 		String emailPut = customerLogin.getEmail();
 		System.out.println("Email: "+emailPut);
 		
-		customerLogin.setPassword("Vivek@123");
+		customerLogin.setPassword("Vivek@1232");
 		String passwordPut = customerLogin.getPassword();
 		System.out.println("Password: "+passwordPut);
 

@@ -1,4 +1,4 @@
-//Verify logging into the Application using invalid email address and valid Password)
+//Validate logging into the Application without providing any credentials
 
 package testCases.customerLogin;
 
@@ -18,9 +18,8 @@ import pageObjects.HomeFrontEndPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_CustomerLogin_006 {
-
-WebDriver driver;
+public class TC_CustomerLogin_008 {
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -31,27 +30,30 @@ WebDriver driver;
 	}
 	
 	@Test(priority = 1)
-	public void invalidEmailValidPass() throws InterruptedException {
+	public void blankEmailPass() throws InterruptedException {
 		HomeFrontEndPage homePage = new HomeFrontEndPage(driver);
 		homePage.loginBtn();
 		
 		CustomerLogin customerLogin = new CustomerLogin(driver);
 		
-		customerLogin.setEmail("vivek22@lgmail.com");
+		customerLogin.setEmail("");
 		String emailPut = customerLogin.getEmail();
 		System.out.println("Email: "+emailPut);
 		
-		customerLogin.setPassword("Vivek@123");
+		customerLogin.setPassword("");
 		String passwordPut = customerLogin.getPassword();
 		System.out.println("Password: "+passwordPut);
 
 		customerLogin.loginBtnClick();
 		Thread.sleep(1000);
 		
-		String invalidError = "Invalid username or password";
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='MuiAlert-message css-1xsto0d']")).getText(), invalidError);
+		String emailError = "Please enter email";
+		String passError = "Please enter password";
 
 		String expectedUrl = "https://www.quickvee.com/customer-login";
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter email']")).getText(), emailError);
+		Assert.assertEquals(driver.findElement(By.xpath("//span[normalize-space()='Please enter password']")).getText(), passError);
 		Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
 		
 		}

@@ -20,7 +20,7 @@ import pageObjects.HomeFrontEndPage;
 
 public class TC_CustomerLogin_005 {
 	
-WebDriver driver;
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -47,7 +47,6 @@ WebDriver driver;
 
 		customerLogin.loginBtnClick();
 		Thread.sleep(1000);
-		System.out.println(driver.getCurrentUrl());
 		
 		String invalidError = "Invalid username or password";
 		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='MuiAlert-message css-1xsto0d']")).getText(), invalidError);

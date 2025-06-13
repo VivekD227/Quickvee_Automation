@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.customerLogin.TC_CustomerLogin_005">
+      <class name="testCases.customerLogin.TC_CustomerLogin_014">
         <methods>
-          <include name="tearDown"/>
+          <include name="clickMerchantLogin"/>
           <include name="setUp"/>
-          <include name="validEmailPass"/>
         </methods>
-      </class> <!-- testCases.customerLogin.TC_CustomerLogin_005 -->
+      </class> <!-- testCases.customerLogin.TC_CustomerLogin_014 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

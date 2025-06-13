@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -52,6 +53,11 @@ public class CustomerLogin extends waitHelper {
 	
 	By forgotPasswordPage = By.xpath("//h1[normalize-space()='Forgot Password']");
 	
+	public void clearInputField(By locator) {
+	    WebElement element = driver.findElement(locator);
+	    element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+	}
+	
 	public void isRegisterPage() {
 		boolean isDisplayedRegister = isRegisterDisplay.isDisplayed();
 		if(isDisplayedRegister) {
@@ -85,7 +91,9 @@ public class CustomerLogin extends waitHelper {
 	
 	public void setEmail(String emailId) {
 		visiblityOfElement(emailIdField);
+		clearInputField(emailIdField);
 		driver.findElement(emailIdField).sendKeys(emailId);
+		
 	}
 	
 	public String getEmail() {
@@ -94,6 +102,7 @@ public class CustomerLogin extends waitHelper {
 	
 	public void setPassword(String pass) {
 		visiblityOfElement(passwordField);
+		clearInputField(passwordField);
 		driver.findElement(passwordField).sendKeys(pass);
 	}
 	
@@ -122,11 +131,17 @@ public class CustomerLogin extends waitHelper {
 		return driver.findElement(orSignInText).isDisplayed();
 	}
 	
-	public void googleLoginClick() {
-		elementClick(googleLoginBtn);
-		driver.findElement(googleLoginBtn).click();
+	public boolean googleLoginClick() {
+		try {
+			elementClick(googleLoginBtn); // custom helper, I assume
+			driver.findElement(googleLoginBtn).click();
+			System.out.println("The google login button is clicked");
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
-	
+		
 	public void registerCustomerTextDisplay() {
 		visiblityOfElement(registerCustomerText);
 		driver.findElement(registerCustomerText).isDisplayed();
@@ -142,7 +157,7 @@ public class CustomerLogin extends waitHelper {
 		driver.findElement(registerCustomerBtn).click();
 	}
 	
-	public void merchanrLoginClick() {
+	public void merchantLoginClick() {
 		elementClick(merchantLoginBtn);
 		driver.findElement(merchantLoginBtn).click();
 	}

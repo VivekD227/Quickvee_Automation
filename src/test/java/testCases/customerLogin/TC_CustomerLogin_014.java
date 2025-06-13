@@ -1,4 +1,4 @@
-//Verify logging into the Application using invalid email address and valid Password)
+//Check whether the  Login functionality is working as expected or not
 
 package testCases.customerLogin;
 
@@ -15,12 +15,12 @@ import org.testng.annotations.Test;
 
 import pageObjects.CustomerLogin;
 import pageObjects.HomeFrontEndPage;
+import pageObjects.RegisterPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_CustomerLogin_006 {
-
-WebDriver driver;
+public class TC_CustomerLogin_014 {
+	WebDriver driver;
 	
 	@BeforeClass
 	public void setUp() {
@@ -31,29 +31,30 @@ WebDriver driver;
 	}
 	
 	@Test(priority = 1)
-	public void invalidEmailValidPass() throws InterruptedException {
+	public void clickMerchantLogin() throws InterruptedException {
 		HomeFrontEndPage homePage = new HomeFrontEndPage(driver);
 		homePage.loginBtn();
 		
 		CustomerLogin customerLogin = new CustomerLogin(driver);
 		
-		customerLogin.setEmail("vivek22@lgmail.com");
-		String emailPut = customerLogin.getEmail();
-		System.out.println("Email: "+emailPut);
+		customerLogin.merchantLoginClick();
 		
-		customerLogin.setPassword("Vivek@123");
-		String passwordPut = customerLogin.getPassword();
-		System.out.println("Password: "+passwordPut);
+		String originalWindow = driver.getWindowHandle();
+		customerLogin.merchantLoginClick();
 
-		customerLogin.loginBtnClick();
-		Thread.sleep(1000);
 		
-		String invalidError = "Invalid username or password";
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='MuiAlert-message css-1xsto0d']")).getText(), invalidError);
-
-		String expectedUrl = "https://www.quickvee.com/customer-login";
+		for(String windowHandle : driver.getWindowHandles()) {
+			if(!windowHandle.equals(originalWindow)) {
+				driver.switchTo().window(windowHandle);
+				break;
+			}
+		}
+		
+		
+		String expectedUrl = "https://www.quickvee.com/merchants/login";
+		
 		Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
-		
+
 		}
 	
 	@AfterClass

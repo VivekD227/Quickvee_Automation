@@ -1,10 +1,9 @@
-//Verify logging into the Application using invalid email address and valid Password)
+//Check whether the "Log in with google" button is working or not
 
 package testCases.customerLogin;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -18,8 +17,7 @@ import pageObjects.HomeFrontEndPage;
 
 @Listeners(utilities.TestListener.class)
 
-public class TC_CustomerLogin_006 {
-
+public class TC_CustomerLogin_010 {
 WebDriver driver;
 	
 	@BeforeClass
@@ -31,30 +29,24 @@ WebDriver driver;
 	}
 	
 	@Test(priority = 1)
-	public void invalidEmailValidPass() throws InterruptedException {
+	public void googleLoginButton() throws InterruptedException {
 		HomeFrontEndPage homePage = new HomeFrontEndPage(driver);
 		homePage.loginBtn();
 		
 		CustomerLogin customerLogin = new CustomerLogin(driver);
 		
-		customerLogin.setEmail("vivek22@lgmail.com");
+		customerLogin.setEmail("vivek22@gmail.com");
 		String emailPut = customerLogin.getEmail();
 		System.out.println("Email: "+emailPut);
 		
-		customerLogin.setPassword("Vivek@123");
+		customerLogin.setPassword("Vivek@1232");
 		String passwordPut = customerLogin.getPassword();
 		System.out.println("Password: "+passwordPut);
-
-		customerLogin.loginBtnClick();
-		Thread.sleep(1000);
 		
-		String invalidError = "Invalid username or password";
-		Assert.assertEquals(driver.findElement(By.xpath("//div[@class='MuiAlert-message css-1xsto0d']")).getText(), invalidError);
-
-		String expectedUrl = "https://www.quickvee.com/customer-login";
-		Assert.assertEquals(driver.getCurrentUrl(), expectedUrl);
+		customerLogin.googleLoginClick();
+		Assert.assertTrue(customerLogin.googleLoginClick(), "Button is not clicked");
 		
-		}
+	}
 	
 	@AfterClass
 	public void tearDown() {
