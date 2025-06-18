@@ -2,20 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-13T06:08:11 GMT-07:00" name="Default suite" finished-at="2025-06-13T06:08:26 GMT-07:00" duration-ms="15511">
+  <suite started-at="2025-06-18T06:54:04 GMT-07:00" name="Default suite" finished-at="2025-06-18T06:54:42 GMT-07:00" duration-ms="38596">
     <groups>
     </groups>
-    <test started-at="2025-06-13T06:08:11 GMT-07:00" name="Default test" finished-at="2025-06-13T06:08:26 GMT-07:00" duration-ms="15511">
-      <class name="testCases.customerLogin.TC_CustomerLogin_014">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.customerLogin.TC_CustomerLogin_014@4218d6a3]" started-at="2025-06-13T06:08:11 GMT-07:00" name="setUp" finished-at="2025-06-13T06:08:22 GMT-07:00" duration-ms="10959" status="PASS">
+    <test started-at="2025-06-18T06:54:04 GMT-07:00" name="Default test" finished-at="2025-06-18T06:54:42 GMT-07:00" duration-ms="38596">
+      <class name="testCases.MerchantLogin.TC_MerchantLogin_002">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:testCases.MerchantLogin.TC_MerchantLogin_002@6150c3ec]" started-at="2025-06-18T06:54:04 GMT-07:00" name="setUp" finished-at="2025-06-18T06:54:22 GMT-07:00" duration-ms="18413" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="clickMerchantLogin()[pri:1, instance:testCases.customerLogin.TC_CustomerLogin_014@4218d6a3]" started-at="2025-06-13T06:08:22 GMT-07:00" name="clickMerchantLogin" finished-at="2025-06-13T06:08:26 GMT-07:00" duration-ms="4511" status="PASS">
+        <test-method signature="quickveeLogoDisplay()[pri:0, instance:testCases.MerchantLogin.TC_MerchantLogin_002@6150c3ec]" started-at="2025-06-18T06:54:22 GMT-07:00" name="quickveeLogoDisplay" finished-at="2025-06-18T06:54:42 GMT-07:00" duration-ms="19715" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- clickMerchantLogin -->
-      </class> <!-- testCases.customerLogin.TC_CustomerLogin_014 -->
+        </test-method> <!-- quickveeLogoDisplay -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.MerchantLogin.TC_MerchantLogin_002@6150c3ec]" started-at="2025-06-18T06:54:42 GMT-07:00" name="tearDown" finished-at="2025-06-18T06:54:42 GMT-07:00" duration-ms="400" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testCases.MerchantLogin.TC_MerchantLogin_002 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
